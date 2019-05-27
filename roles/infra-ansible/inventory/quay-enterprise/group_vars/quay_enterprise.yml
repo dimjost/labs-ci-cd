@@ -1,0 +1,6 @@
+---
+
+# Superuser Configuration
+quay_superuser_username: ""
+quay_superuser_password: ""
+quay_superuser_email: ""

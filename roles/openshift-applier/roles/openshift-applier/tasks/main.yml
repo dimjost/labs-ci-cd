@@ -6,15 +6,15 @@
 - name: "Error out on anything in the inventory that is no longer supported"
   include_tasks: error-on-unsupported.yml
 
-- name: "Pull in Galaxy requirements - if set"
-  include_tasks: install-dependencies.yml
-  with_items:
-    - "{{ openshift_cluster_content }}"
-  loop_control:
-    loop_var: dependencies
-  when:
-    - dependencies.galaxy_requirements is defined
-  delegate_to: localhost
+#- name: "Pull in Galaxy requirements - if set"
+#  include_tasks: install-dependencies.yml
+#  with_items:
+#    - "{{ openshift_cluster_content }}"
+#  loop_control:
+#    loop_var: dependencies
+#  when:
+#    - dependencies.galaxy_requirements is defined
+#  delegate_to: 127.0.0.1
 
 - name: "Prepare to copy content to remote host(s) if not running 'locally'"
   import_tasks: prep-copy-inventory-to-remote.yml

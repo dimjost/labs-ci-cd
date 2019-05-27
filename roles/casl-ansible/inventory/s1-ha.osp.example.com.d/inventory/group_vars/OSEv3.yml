@@ -1,0 +1,63 @@
+---
+
+ansible_user: openshift
+ansible_become: True
+
+deployment_type: openshift-enterprise
+openshift_deployment_type: openshift-enterprise
+openshift_release: v3.11
+
+openshift_master_cluster_method: native
+openshift_master_cluster_hostname: "{{ groups.lb.0 }}"
+openshift_master_cluster_public_hostname: "{{ groups.lb.0 }}"
+openshift_master_default_subdomain: "apps.{{ env_id }}.{{ dns_domain }}"
+
+# Registry URL & Credentials
+# For more info: https://access.redhat.com/terms-based-registry/
+oreg_url: 'registry.redhat.io/openshift3/ose-${component}:${version}'
+#oreg_auth_user: "{{ lookup('env', 'OREG_AUTH_USER' )}}"
+#oreg_auth_password: "{{ lookup('env', 'OREG_AUTH_PASSWORD' )}}"
+
+openshift_master_identity_providers:
+ - 'name': 'htpasswd_auth'
+   'login': 'true'
+   'challenge': 'true'
+   'kind': 'HTPasswdPasswordIdentityProvider'
+
+openshift_node_groups:
+- name: node-config-master
+  labels:
+  - 'node-role.kubernetes.io/master=true'
+  edits:
+  - key: kubeletArguments.kube-reserved
+    value:
+    - 'cpu={{ ansible_processor_vcpus * 50 }}m'
+    - 'memory={{ ansible_processor_vcpus * 50 }}M'
+  - key: kubeletArguments.system-reserved
+    value:
+    - 'cpu={{ ansible_processor_vcpus * 50 }}m'
+    - 'memory={{ ansible_processor_vcpus * 100 }}M'
+- name: node-config-infra
+  labels:
+  - 'node-role.kubernetes.io/infra=true'
+  edits:
+  - key: kubeletArguments.kube-reserved
+    value:
+    - 'cpu={{ ansible_processor_vcpus * 50 }}m'
+    - 'memory={{ ansible_processor_vcpus * 50 }}M'
+  - key: kubeletArguments.system-reserved
+    value:
+    - 'cpu={{ ansible_processor_vcpus * 50 }}m'
+    - 'memory={{ ansible_processor_vcpus * 100 }}M'
+- name: node-config-compute
+  labels:
+  - 'node-role.kubernetes.io/compute=true'
+  edits:
+  - key: kubeletArguments.kube-reserved
+    value:
+    - 'cpu={{ ansible_processor_vcpus * 50 }}m'
+    - 'memory={{ ansible_processor_vcpus * 50 }}M'
+  - key: kubeletArguments.system-reserved
+    value:
+    - 'cpu={{ ansible_processor_vcpus * 50 }}m'
+    - 'memory={{ ansible_processor_vcpus * 100 }}M'

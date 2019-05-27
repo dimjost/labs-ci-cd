@@ -1,0 +1,17 @@
+---
+
+- name: "Prepare facts for DNS records"
+  set_fact:
+    dns_data:
+      views: []
+
+- name: "Set the private(internal) and public(external) DNS to use (if provided)"
+  include_tasks: dns-records.yml
+  with_items:
+    - "{{ nsupdate_config | default([]) }}"
+  loop_control:
+    loop_var: nsupdate
+  when:
+    - nsupdate.view is defined
+    - nsupdate.view == 'private' or nsupdate.view == 'public'
+
