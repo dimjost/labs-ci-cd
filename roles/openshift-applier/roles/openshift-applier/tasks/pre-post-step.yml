@@ -12,7 +12,7 @@
 
 - name: "Include the pre/post step role"
   include_role:
-    name: "{{ tmp_dep_dir }}{{ step.role }}"
+    name: "../../../../{{ step.role }}"
   when:
     - step is defined
     - step.role is defined
