@@ -2,6 +2,6 @@ SOURCE_REPOSITORY_URL=https://github.com/dimjost/containers-quickstarts.git
 SOURCE_CONTEXT_DIR=jenkins-slaves/jenkins-slave-zap
 BUILDER_IMAGE_NAME=centos:centos7
 NAME=jenkins-slave-zap
-SOURCE_REPOSITORY_REF=v1.9
+SOURCE_REPOSITORY_REF=master
 DOCKERFILE_PATH=Dockerfile
 SLAVE_IMAGE_TAG=latest
