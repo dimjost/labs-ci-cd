@@ -50,7 +50,16 @@ There are multiple Ansible inventories which divide the type of components to be
 * [OpenShift CLI Tools](https://docs.openshift.com/container-platform/latest/cli_reference/get_started_cli.html)
 * Access to the OpenShift cluster (Your user needs permissions to deploy ProjectRequest objects)
 * libselinux-python (only needed on Fedora, RHEL, and CentOS)
-  - Install by running `yum install libselinux-python`.
+  - Install by running `yum -y install libselinux-python`.
+  
+### Enable RedHat Docker-Registry
+
+```bash
+yum install *rhsm*
+wget http://mirror.centos.org/centos/7/os/x86_64/Packages/python-rhsm-certificates-1.19.10-1.el7_4.x86_64.rpm
+rpm2cpio python-rhsm-certificates-1.19.10-1.el7_4.x86_64.rpm | cpio -iv --to-stdout ./etc/rhsm/ca/redhat-uep.pem | tee /etc/rhsm/ca/redhat-uep.pem
+docker pull registry.access.redhat.com/rhel7/rhel:latest
+```
 
 ### Inventory Usage
 It should be noted that non-docker executions will utilize the inventory directory included in this repo by default. If you would like to specify a custom inventory for any of the below tasks, you can do so by adding `-i /path/to/my/inventory` to the command
@@ -61,7 +70,7 @@ It should be noted that non-docker executions will utilize the inventory directo
 2. Clone this repository.
 3. Install the required [openshift-applier](https://github.com/redhat-cop/openshift-applier) dependency:
 ```bash
-ansible-galaxy install -r requirements.yml --roles-path=roles
+// ansible-galaxy install -r requirements.yml --roles-path=roles
 ```
 4. To deploy everything please run:
 ```bash
