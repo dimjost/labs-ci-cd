@@ -69,10 +69,13 @@ It should be noted that non-docker executions will utilize the inventory directo
 1. Log on to an OpenShift server `oc login -u <user> https://<server>:<port>/`
 2. Clone this repository.
 3. Install the required [openshift-applier](https://github.com/redhat-cop/openshift-applier) dependency:
+
 ```bash
 // ansible-galaxy install -r requirements.yml --roles-path=roles
 ```
+
 4. To deploy everything please run:
+
 ```bash
 ansible-playbook site.yml
 ```
@@ -115,7 +118,7 @@ A few additional guiding principles:
 
 * This repository is built to ensure all the individual components are integrated and can be deployed together.
 * It is likely that your residency will need to remove some components in this inventory and then add others. Thus, every residency team is encouraged to create a fork of this repo and modify to their needs. A few things to consider for your fork:
-  - Avoid using local Templates in this repo, Templates should always point to a *tag* of [redhat-cop/containers-quickstarts](https://github.com/redhat-cop/containers-quickstarts) or [rht-labs/openshift-templates](https://github.com/rht-labs/openshift-templates). This encourages reuse, as well as contributions back to the upstream effort.
+  - Avoid using local Templates in this repo, Templates should always point to a *tag* of [dimjost/containers-quickstarts](https://github.com/dimjost/containers-quickstarts) or [rht-labs/openshift-templates](https://github.com/rht-labs/openshift-templates). This encourages reuse, as well as contributions back to the upstream effort.
   - If you build new, reusable features in your fork, contribute them back!
 * Generally speaking, there should only be one tool per functional use case e.g. Sonatype Nexus is the artifact repository so we will not support JFrog Artifactory
 

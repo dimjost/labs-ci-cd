@@ -1,4 +1,4 @@
-SOURCE_REPOSITORY_URL=https://github.com/redhat-cop/containers-quickstarts.git
+SOURCE_REPOSITORY_URL=https://github.com/dimjost/containers-quickstarts.git
 SOURCE_CONTEXT_DIR=jenkins-slaves/jenkins-slave-zap
 BUILDER_IMAGE_NAME=centos:centos7
 NAME=jenkins-slave-zap
