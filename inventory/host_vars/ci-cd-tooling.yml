@@ -29,6 +29,12 @@ jenkins:
     GITLAB_HOST: "gitlab.mydomain.example.com"
     GITLAB_TOKEN: "token123"
     GITLAB_GROUP_NAME: "rht-labs"
+    GIT_USERNAME: "cip_build_devops-expert-tech"
+    GIT_PASSWORD: "changeit"
+    SHARED_LIB_NAME: "devops-expert-cip-pipeline"
+    SHARED_LIB_REPO: "git@gitlab.devops-box.de:devops/de.devops-expert.cip.pipeline.git"
+    SHARED_LIB_REF: "master"
+    SHARED_LIB_SECRET: "cip_build_devops-expert-tech"
 
 nexus:
   secret:

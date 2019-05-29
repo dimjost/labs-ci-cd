@@ -5,10 +5,6 @@
 
 - name: "Error out on anything in the inventory that is no longer supported"
   include_tasks: error-on-unsupported.yml
-  
-- name: Generate an OpenSSH keypair with the default values (4096 bits, rsa)
-  openssh_keypair:
-    path: /tmp/id_ssh_rsa
 
 #- name: "Pull in Galaxy requirements - if set"
 #  include_tasks: install-dependencies.yml
