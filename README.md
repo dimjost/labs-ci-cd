@@ -71,7 +71,7 @@ It should be noted that non-docker executions will utilize the inventory directo
 3. Install the required [openshift-applier](https://github.com/redhat-cop/openshift-applier) dependency:
 
 ```bash
-// ansible-galaxy install -r requirements.yml --roles-path=roles
+ansible-galaxy install -r requirements.yml --roles-path=roles
 ```
 
 4. To deploy everything please run:
