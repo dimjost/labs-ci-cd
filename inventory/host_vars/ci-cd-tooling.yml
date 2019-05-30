@@ -255,6 +255,13 @@ openshift_cluster_content:
     template: "{{ cop_quickstarts_raw }}/{{ cop_quickstarts_raw_version_tag }}/sonarqube/.openshift/templates/sonarqube-deployment-template.yml"
     params_from_vars: "{{ sonarqube.deploy }}"
     namespace: "{{ ci_cd_namespace }}"
+    post_steps:
+    - role: infra-ansible/roles/config-sonar
+      vars:
+        sonar_namespace: "{{ ci_cd_namespace }}"
+        sonar_user: "admin"
+        sonar_password: "{{ sonar_password }}"
+        sonar_api_base_path: /service/rest/v1
     tags:
       - sonarqube
       - sonarqube-deploy
