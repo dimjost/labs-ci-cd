@@ -3,6 +3,7 @@ ansible_connection: local
 
 jenkins_name: jenkins
 sonarqube_name: sonarqube
+sonarqube_password: "admin"
 hoverfly_name: hoverfly
 nexus_password: "admin123"
 
@@ -258,10 +259,10 @@ openshift_cluster_content:
     post_steps:
     - role: infra-ansible/roles/config-sonar
       vars:
-        sonar_namespace: "{{ ci_cd_namespace }}"
-        sonar_user: "admin"
-        sonar_password: "{{ sonar_password }}"
-        sonar_api_base_path: /service/rest/v1
+        sonarqube_namespace: "{{ ci_cd_namespace }}"
+        sonarqube_user: "admin"
+        sonarqube_password: "{{ sonarqube_password }}"
+        sonarqube_api_base_path: /api
     tags:
       - sonarqube
       - sonarqube-deploy
