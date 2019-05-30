@@ -1,6 +1,0 @@
----
-
-- name: 'Create NFS server'
-  hosts: nfs-server
-  roles:
-  - role: nfs-server

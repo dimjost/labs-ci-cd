@@ -1,8 +1,0 @@
----
-- name: "Install additional packages for MATE"
-  dnf:
-    name: "{{ item }}"
-    state: present
-  with_items:
-  - '@MATE Desktop'
-

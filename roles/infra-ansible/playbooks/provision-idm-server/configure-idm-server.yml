@@ -1,5 +1,0 @@
----
-
-- hosts: idm-server
-  roles:
-  - role: config-idm-server

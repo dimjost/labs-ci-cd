@@ -1,6 +1,0 @@
----
-
-- hosts: all
-  roles:
-    - manage-server-ca-cert
-

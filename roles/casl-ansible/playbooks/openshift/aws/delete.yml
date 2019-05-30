@@ -1,4 +1,0 @@
----
-- hosts: localhost
-  roles:
-    - { role: manage-aws-infra, action: 'absent' }

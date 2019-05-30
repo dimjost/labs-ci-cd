@@ -1,5 +1,0 @@
----
-- hosts: webhooks-server
-  tasks:
-    - include_role:
-        name: "{{ playbook_dir }}/../../add-webhooks-github"

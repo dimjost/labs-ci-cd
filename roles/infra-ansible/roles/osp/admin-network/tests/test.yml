@@ -1,5 +1,0 @@
----
-
-- hosts: localhost
-  roles:
-  - osp-admin-network

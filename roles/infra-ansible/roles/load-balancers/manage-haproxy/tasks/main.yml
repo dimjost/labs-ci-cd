@@ -1,5 +1,0 @@
----
-
-- include_tasks: 'install.yml'
-- include_tasks: 'generate-config.yml'
-- include_tasks: 'activate-config.yml'

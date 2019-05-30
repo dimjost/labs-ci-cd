@@ -1,7 +1,0 @@
-*.pyc
-*.retry
-*.swp
-
-# IntelliJ
-.idea/
-*.iml

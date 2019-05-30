@@ -1,7 +1,0 @@
----
-- name: Test Jira Role
-  hosts: jira
-  vars_files:
-  - vars/vars_atlassian
-  roles:
-  - manage-jira

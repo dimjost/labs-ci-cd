@@ -1,7 +1,0 @@
----
-
-- name: 'Configure Satellite'
-  hosts: satellite-server
-  roles:
-  - role: config-satellite
-

@@ -1,7 +1,0 @@
----
-
-# Ensure all prerequisites are met
-- import_tasks: prerequisites.yml
-
-# Setup and prepare NRPE (Nagios Remote Plugin Executor)
-- import_tasks: nrpe.yml

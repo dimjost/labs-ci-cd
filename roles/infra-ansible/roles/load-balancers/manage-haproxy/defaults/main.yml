@@ -1,4 +1,0 @@
----
-
-temp_new_file: '/etc/haproxy/haproxy.cfg.new'
-lb_https_backends: {}

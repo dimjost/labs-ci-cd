@@ -1,5 +1,0 @@
----
-
-versionlock_packages:
-  - 'bash-*'
-  - 'NetworkManager-*'

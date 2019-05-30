@@ -1,4 +1,0 @@
----
-- hosts: ntp_servers
-  roles:
-  - config-chrony

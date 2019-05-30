@@ -29,7 +29,7 @@ The layout of the project is like most standard `ansible-playbooks` with a simpl
 ```
  * `site.yml` is a playbook that sets up some variables and drives the `openshift-applier` role.
  * `requirements.yml` is a manifest which contains the Ansible modules needed to run the playbook 
- * `inventory/host_vars/*.yml` is the collection of objects we want to insert into the cluster written according to [the convention defined by the openshift-applier role](https://github.com/redhat-cop/openshift-applier/tree/master/roles/openshift-applier#sourcing-openshift-object-definitions).
+ * `inventory/host_vars/*.yml` is the collection of objects we want to insert into the cluster written according to [the convention defined by the openshift-applier role](https://github.com/dimjost/openshift-applier/tree/master/roles/openshift-applier#sourcing-openshift-object-definitions).
  * `inventory/hosts` is where the `targets` are defined for grouping of the various inventories to be run eg `bootsrap` for creating projects and roles bindings
  * `params` is a set of [parameter files](https://docs.openshift.com/container-platform/;latest/dev_guide/templates.html#templates-parameters) to be processed along with their respective OpenShift template. The convention here is to group files by their application.
 
@@ -68,7 +68,7 @@ It should be noted that non-docker executions will utilize the inventory directo
 
 1. Log on to an OpenShift server `oc login -u <user> https://<server>:<port>/`
 2. Clone this repository.
-3. Install the required [openshift-applier](https://github.com/redhat-cop/openshift-applier) dependency:
+3. Install the required [openshift-applier](https://github.com/dimjost/openshift-applier) dependency:
 
 ```bash
 ansible-galaxy install -r requirements.yml --roles-path=roles
@@ -99,7 +99,7 @@ After running the playbook, the pipeline should execute in Jenkins, build the sp
 
 In some cases you might not want to deploy all of the components in this repo; but only a subset such as Jenkins and the customisations to it.
 
-1. See [the docs](https://github.com/redhat-cop/openshift-applier/tree/master/roles/openshift-applier#filtering-content-based-on-tags) in the openshift-applier repo.
+1. See [the docs](https://github.com/dimjost/openshift-applier/tree/master/roles/openshift-applier#filtering-content-based-on-tags) in the openshift-applier repo.
 2. The only required tag to deploy objects within the inventory is **projects**, all other tags are *optional*
 3. Here is an example that runs the tags that provision projects, ci, and jenkins objects:
 ```bash
@@ -112,7 +112,7 @@ ansible-playbook site.yml \
 The goal of this repository is to:
 
  1. Bootstrap Labs residencies will all the tools necessary for a comprehensive, OpenShift native CI/CD pipeline
- 2. Serve as a reference implementation of the [openshift-applier](https://github.com/redhat-cop/openshift-applier/tree/master/roles/openshift-applier) model for Infrastructure-as-Code (IaC)
+ 2. Serve as a reference implementation of the [openshift-applier](https://github.com/dimjost/openshift-applier/tree/master/roles/openshift-applier) model for Infrastructure-as-Code (IaC)
 
 A few additional guiding principles:
 
@@ -132,7 +132,7 @@ A few additional guiding principles:
 
 ## Common Issues
 
-* Issues with valid nexus certs like seen [here](https://github.com/redhat-cop/infra-ansible/issues/342). You can set the ansible variable `nexus_validate_certs: false` as a work around.
+* Issues with valid nexus certs like seen [here](https://github.com/dimjost/infra-ansible/issues/342). You can set the ansible variable `nexus_validate_certs: false` as a work around.
 * S2I Build fails to push image to registry with `error: build error: Failed to push image: unauthorized: authentication required`. See [this issue](https://github.com/openshift/origin/issues/4518)
 
 

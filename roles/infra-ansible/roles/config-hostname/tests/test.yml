@@ -1,5 +1,0 @@
----
-
-- hosts: my-host
-  roles:
-  - role: config-hostname 

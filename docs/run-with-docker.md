@@ -33,7 +33,7 @@ If `labs-ci-cd` already exists on your OpenShift cluster and you want to create 
 
 In some cases you might not want to deploy all of the components in this repo; but only a subset such as Jenkins and the customisations to it.
 
-1. See [the docs](https://github.com/redhat-cop/openshift-applier/tree/master/roles/openshift-applier#filtering-content-based-on-tags) in the openshift-applier repo.
+1. See [the docs](https://github.com/dimjost/openshift-applier/tree/master/roles/openshift-applier#filtering-content-based-on-tags) in the openshift-applier repo.
 2. The only required tag to deploy objects within the inventory is **projects**, all other tags are *optional*
 3. If using `./run.sh` and docker, here is an example that runs the tags that provision projects, ci, and jenkins objects:
 ```bash

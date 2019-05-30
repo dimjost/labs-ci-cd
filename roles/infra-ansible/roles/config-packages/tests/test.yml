@@ -1,6 +1,0 @@
----
-
-- name: "Test installing additional packages"
-  hosts: all
-  roles:
-    - role: config-packages 

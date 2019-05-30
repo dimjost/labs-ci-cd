@@ -1,1 +1,0 @@
-test.server ansible_host=192.168.1.8 ansible_user=fedora ansible_become=true

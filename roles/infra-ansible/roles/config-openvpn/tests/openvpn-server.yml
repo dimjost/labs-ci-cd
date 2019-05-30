@@ -1,5 +1,0 @@
----
-
-- hosts: openvpn_servers
-  roles: 
-  - role: config-openvpn

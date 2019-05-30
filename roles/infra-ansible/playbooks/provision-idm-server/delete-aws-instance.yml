@@ -1,4 +1,0 @@
----
-- import_playbook: ../aws/delete-instance.yml
-  vars:
-    state: absent

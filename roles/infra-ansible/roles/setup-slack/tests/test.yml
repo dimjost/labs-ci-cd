@@ -1,5 +1,0 @@
----
-- name: Test slack setup
-  hosts: localhost
-  roles:
-    - setup-slack
