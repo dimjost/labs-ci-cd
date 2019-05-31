@@ -262,7 +262,7 @@ openshift_cluster_content:
         sonarqube_namespace: "{{ ci_cd_namespace }}"
         sonarqube_user: "admin"
         sonarqube_password: "{{ sonarqube_password }}"
-        sonarqube_api_base_path: /api
+        sonarqube_api_base_path: /api/webservices/list
     tags:
       - sonarqube
       - sonarqube-deploy
