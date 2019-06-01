@@ -1,6 +1,6 @@
 SOURCE_REPOSITORY_URL=https://github.com/dimjost/containers-quickstarts.git
 SOURCE_CONTEXT_DIR=jenkins-slaves/jenkins-slave-mvn3.6-openjdk10-node10
-BUILDER_IMAGE_NAME=registry.access.redhat.com/openshift/jenkins-slave-base-centos7:v3.11
+BUILDER_IMAGE_NAME=centos:centos7
 NAME=jenkins-slave-mvn3.6-openjdk10-node10
 SOURCE_REPOSITORY_REF=master
 DOCKERFILE_PATH=Dockerfile
