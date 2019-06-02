@@ -163,13 +163,13 @@ openshift_cluster_content:
     tags:
     - jenkins-slaves
     - mvn-slave
-  - name: jenkins-slave-mvn3.6-openjdk10-node10
-    template: "{{ cop_quickstarts_raw }}/{{ cop_quickstarts_raw_version_tag }}/jenkins-slaves/.openshift/templates/jenkins-slave-generic-template.yml"
-    params: "{{ inventory_dir }}/../params/jenkins-slaves/mvn3.6-openjdk10-node10"
-    namespace: "{{ ci_cd_namespace }}"
-    tags:
-    - jenkins-slaves
-    - mvn-slave
+#  - name: jenkins-slave-mvn3.6-openjdk10-node10
+#    template: "{{ cop_quickstarts_raw }}/{{ cop_quickstarts_raw_version_tag }}/jenkins-slaves/.openshift/templates/jenkins-slave-generic-template.yml"
+#    params: "{{ inventory_dir }}/../params/jenkins-slaves/mvn3.6-openjdk10-node10"
+#    namespace: "{{ ci_cd_namespace }}"
+#    tags:
+#    - jenkins-slaves
+#    - mvn-slave
   - name: jenkins-slave-npm
     template: "{{ cop_quickstarts_raw }}/{{ cop_quickstarts_raw_version_tag }}/jenkins-slaves/.openshift/templates/jenkins-slave-generic-template.yml"
     params: "{{ inventory_dir }}/../params/jenkins-slaves/npm"
