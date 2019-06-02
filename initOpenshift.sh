@@ -1,5 +1,11 @@
 #!/bin/bash
 
+echo "Remove old scripts"
+rm -R -I roles
+
+echo "Login to the local Openshift"
+oc login https://127.0.0.1:8443 -u system
+
 echo "List existing Projects"
 oc get projects
 
