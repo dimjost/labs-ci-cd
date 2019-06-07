@@ -1,7 +1,7 @@
 SOURCE_REPOSITORY_URL=https://github.com/dimjost/containers-quickstarts.git
-SOURCE_CONTEXT_DIR=jenkins-slaves/jenkins-slave-oracleJdk10.0.2-mvn3.6.1-nodejs10.16.0
+SOURCE_CONTEXT_DIR=jenkins-slaves/jenkins-slave-oraclejdk10.0.2-mvn3.6.1-nodejs10.16.0
 BUILDER_IMAGE_NAME=openshift/jenkins-slave-base-centos7
-NAME=jenkins-slave-oracleJdk10.0.2-mvn3.6.1-nodejs10.16.0
+NAME=jenkins-slave-oraclejdk10.0.2-mvn3.6.1-nodejs10.16.0
 SOURCE_REPOSITORY_REF=master
 DOCKERFILE_PATH=Dockerfile
 SLAVE_IMAGE_TAG=latest
