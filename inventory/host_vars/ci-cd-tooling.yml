@@ -238,64 +238,64 @@ openshift_cluster_content:
 # supporting tooling, pre and post hooks needed to setup and configure a comprehensive tool chain
 - object: ci-cd-deployments
   content: ## SONARQUBE DB DEPLOYMENT MUST COME BEFORE SONARQUBE DEPLOYMENT OR THE JDBC SECRETS WILL NOT BE CREATED PROPERLY
-  - name: sonardb
-    template: "openshift//postgresql-persistent"
-    params_from_vars: "{{ sonarqube.postgresql }}"
-    namespace: "{{ ci_cd_namespace }}"
-    post_steps:
-    - role: casl-ansible/roles/openshift-labels
-      vars:
-        target_namespace: "{{ ci_cd_namespace }}"
-        label: "app=sonarqube"
-        target_object: dc
-        target_name: sonardb
-    - role: casl-ansible/roles/openshift-labels
-      vars:
-        target_namespace: "{{ ci_cd_namespace }}"
-        label: "app=sonarqube"
-        target_object: svc
-        target_name: sonardb
-    - role: casl-ansible/roles/openshift-labels
-      vars:
-        target_namespace: "{{ ci_cd_namespace }}"
-        label: "app=sonarqube"
-        target_object: secret
-        target_name: sonardb
-    tags:
-      - sonarqube
-      - sonarqube-postgresql
-      - sonarqube-postgresql-deploy
-      - ci-cd-deployments
-  - name: sonarqube
-    template: "{{ cop_quickstarts_raw }}/{{ cop_quickstarts_raw_version_tag }}/sonarqube/.openshift/templates/sonarqube-deployment-template.yml"
-    params_from_vars: "{{ sonarqube.deploy }}"
-    namespace: "{{ ci_cd_namespace }}"
-    post_steps:
-    - role: infra-ansible/roles/config-sonar
-      vars:
-        sonarqube_namespace: "{{ ci_cd_namespace }}"
-        sonarqube_user: "admin"
-        sonarqube_password: "{{ sonarqube_password }}"
-        sonarqube_api_base_path: /api/webservices/list
-    tags:
-      - sonarqube
-      - sonarqube-deploy
-      - ci-cd-deployments
-  - name: nexus
-    template: "{{ openshift_templates_raw }}/{{ openshift_templates_raw_version_tag }}/nexus/nexus-deployment-template.yml"
-    params_from_vars: "{{ nexus.deploy }}"
-    namespace: "{{ ci_cd_namespace }}"
-    post_steps:
-    - role: infra-ansible/roles/config-nexus
-      vars:
-        nexus_namespace: "{{ ci_cd_namespace }}"
-        nexus_user: "admin"
-        nexus_password: "{{ nexus_password }}"
-        nexus_api_base_path: /service/rest/v1
-    tags:
-      - nexus
-      - nexus-deploy
-      - ci-cd-deployments
+#  - name: sonardb
+#    template: "openshift//postgresql-persistent"
+#    params_from_vars: "{{ sonarqube.postgresql }}"
+#    namespace: "{{ ci_cd_namespace }}"
+#    post_steps:
+#    - role: casl-ansible/roles/openshift-labels
+#      vars:
+#        target_namespace: "{{ ci_cd_namespace }}"
+#        label: "app=sonarqube"
+#        target_object: dc
+#        target_name: sonardb
+#    - role: casl-ansible/roles/openshift-labels
+#      vars:
+#        target_namespace: "{{ ci_cd_namespace }}"
+#        label: "app=sonarqube"
+#        target_object: svc
+#        target_name: sonardb
+#    - role: casl-ansible/roles/openshift-labels
+#      vars:
+#        target_namespace: "{{ ci_cd_namespace }}"
+#        label: "app=sonarqube"
+#        target_object: secret
+#        target_name: sonardb
+#    tags:
+#      - sonarqube
+#      - sonarqube-postgresql
+#      - sonarqube-postgresql-deploy
+#      - ci-cd-deployments
+#  - name: sonarqube
+#    template: "{{ cop_quickstarts_raw }}/{{ cop_quickstarts_raw_version_tag }}/sonarqube/.openshift/templates/sonarqube-deployment-template.yml"
+#    params_from_vars: "{{ sonarqube.deploy }}"
+#    namespace: "{{ ci_cd_namespace }}"
+#    post_steps:
+#    - role: infra-ansible/roles/config-sonar
+#      vars:
+#        sonarqube_namespace: "{{ ci_cd_namespace }}"
+#        sonarqube_user: "admin"
+#        sonarqube_password: "{{ sonarqube_password }}"
+#        sonarqube_api_base_path: /api/webservices/list
+#    tags:
+#      - sonarqube
+#      - sonarqube-deploy
+#      - ci-cd-deployments
+#  - name: nexus
+#    template: "{{ openshift_templates_raw }}/{{ openshift_templates_raw_version_tag }}/nexus/nexus-deployment-template.yml"
+#    params_from_vars: "{{ nexus.deploy }}"
+#    namespace: "{{ ci_cd_namespace }}"
+#    post_steps:
+#    - role: infra-ansible/roles/config-nexus
+#      vars:
+#        nexus_namespace: "{{ ci_cd_namespace }}"
+#        nexus_user: "admin"
+#        nexus_password: "{{ nexus_password }}"
+#        nexus_api_base_path: /service/rest/v1
+#    tags:
+#      - nexus
+#      - nexus-deploy
+#      - ci-cd-deployments
   #  Want to use Ephemeral Jenkins? Just swap out these two lines
   # - name: jenkins-ephemeral
   #   template: "{{ openshift_templates_raw }}/{{ openshift_templates_raw_version_tag }}/jenkins/jenkins-ephemeral-template.yml"
@@ -315,27 +315,27 @@ openshift_cluster_content:
       - jenkins-deploy
       - jenkins-persistent
       - ci-cd-deployments
-  - name: zalenium
-    template: "{{ cop_quickstarts_raw }}/{{ cop_quickstarts_raw_version_tag }}/zalenium/.openshift/templates/zalenium-deployment.yml"
-    params_from_vars: "{{ zalenium }}"
-    namespace: "{{ ci_cd_namespace }}"
-    tags:
-      - zalenium
-      - zalenium-deploy
-      - ci-cd-deployments
-  - name: hoverfly
-    template: "{{ cop_quickstarts_raw }}/{{ cop_quickstarts_raw_version_tag }}/hoverfly/.openshift/templates/hoverfly-deployment-template.yml"
-    params_from_vars: "{{ hoverfly.deploy }}"
-    namespace: "{{ ci_cd_namespace }}"
-    tags:
-      - hoverfly
-      - hoverfly-deploy
-      - ci-cd-deployments
-  - name: pact-broker
-    template: "{{ openshift_templates_raw }}/{{ openshift_templates_raw_version_tag }}/pact-broker/pact-broker-deploy.yml"
-    params_from_vars: "{{ pact_broker }}"
-    namespace: "{{ ci_cd_namespace }}"
-    tags:
-      - pact-broker
-      - pact-broker-deploy
-      - ci-cd-deployments
+#  - name: zalenium
+#    template: "{{ cop_quickstarts_raw }}/{{ cop_quickstarts_raw_version_tag }}/zalenium/.openshift/templates/zalenium-deployment.yml"
+#    params_from_vars: "{{ zalenium }}"
+#    namespace: "{{ ci_cd_namespace }}"
+#    tags:
+#      - zalenium
+#      - zalenium-deploy
+#      - ci-cd-deployments
+#  - name: hoverfly
+#    template: "{{ cop_quickstarts_raw }}/{{ cop_quickstarts_raw_version_tag }}/hoverfly/.openshift/templates/hoverfly-deployment-template.yml"
+#    params_from_vars: "{{ hoverfly.deploy }}"
+#    namespace: "{{ ci_cd_namespace }}"
+#    tags:
+#      - hoverfly
+#      - hoverfly-deploy
+#      - ci-cd-deployments
+#  - name: pact-broker
+#    template: "{{ openshift_templates_raw }}/{{ openshift_templates_raw_version_tag }}/pact-broker/pact-broker-deploy.yml"
+#    params_from_vars: "{{ pact_broker }}"
+#    namespace: "{{ ci_cd_namespace }}"
+#    tags:
+#      - pact-broker
+#      - pact-broker-deploy
+#      - ci-cd-deployments
