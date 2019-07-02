@@ -1,9 +1,9 @@
 ---
-#- name: Create Projects and Policies
-#  hosts: bootstrap
-#  tasks:
-#    - include_role:
-#        name: openshift-applier/roles/openshift-applier
+- name: Create Projects and Policies
+  hosts: bootstrap
+  tasks:
+    - include_role:
+        name: openshift-applier/roles/openshift-applier
 
 - name: Create CI/CD tools
   hosts: tools
