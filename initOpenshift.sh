@@ -14,8 +14,8 @@ oc delete project labs-ci-cd
 oc delete project labs-dev
 oc delete project labs-test
 
-echo "Wait for 3 minutes"
-sleep 180
+echo "Wait for 1 minutes"
+sleep 60
 
 echo "Install the required"
 ansible-galaxy install -r requirements.yml --roles-path=roles
